@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.locotoinnovations.composeviewpager.network.PostService
 import com.locotoinnovations.composeviewpager.network.model.Post
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +19,6 @@ import javax.inject.Inject
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
     private val postService: PostService,
-    private val ioScope: CoroutineDispatcher = Dispatchers.IO,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MainActivityUiState())
@@ -34,7 +32,7 @@ class MainActivityViewModel @Inject constructor(
             /**
              * it's important to make this call `postService.getPosts()` in the IO thread
              */
-            val posts: List<Post> = withContext(ioScope) {
+            val posts: List<Post> = withContext(Dispatchers.IO) {
                 postService.getPosts()
             }
             _uiState.update {

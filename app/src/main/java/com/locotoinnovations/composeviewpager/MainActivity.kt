@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -24,8 +26,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-    val viewmodel: MainActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +47,7 @@ fun MainScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle(initialValue = MainActivityUiState())
     Column(
-        modifier = modifier,
+        modifier = modifier.padding(8.dp),
     ) {
         Button(onClick = {
             viewModel.getData()
@@ -58,9 +58,11 @@ fun MainScreen(
         if (uiState.isLoading) {
             Text("Loading...")
         } else {
-            uiState.posts.forEach {
-                Text(it.title)
-                Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            LazyColumn {
+                items(uiState.posts) { post ->
+                    Text(post.title)
+                    Spacer(modifier = Modifier.padding(vertical = 4.dp))
+                }
             }
         }
     }
