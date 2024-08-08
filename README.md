@@ -1,5 +1,7 @@
 # How can I add dagger hilt dependency using the newest .kts instead of the old build.gradle file ?
 
+## reference to the https://dagger.dev/dev-guide/ksp.html
+
 ## in libs.versions.toml
 ```kotlin 
 [versions]

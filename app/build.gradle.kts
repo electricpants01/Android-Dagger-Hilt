@@ -68,8 +68,18 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    // fragment
+    implementation(libs.fragment.ktx)
+    // viewmodel compose
+    implementation(libs.lifecycle.viewmodel.compose)
+    // compose lifecycle
+    implementation(libs.lifecycle.compose)
+    implementation(libs.lifecycle.runtime.compose)
     // retrofit
     implementation(libs.retrofit2)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.okhttp3)
+    implementation(libs.okhttp3.logging.interceptor)
     // dagger hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
