@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlinAndroidKsp)
     alias(libs.plugins.hiltAndroid)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -42,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.0"
+        kotlinCompilerExtensionVersion = "1.5.5"
     }
     packaging {
         resources {
@@ -73,7 +74,6 @@ dependencies {
     // viewmodel compose
     implementation(libs.lifecycle.viewmodel.compose)
     // compose lifecycle
-    implementation(libs.lifecycle.compose)
     implementation(libs.lifecycle.runtime.compose)
     // retrofit
     implementation(libs.retrofit2)
