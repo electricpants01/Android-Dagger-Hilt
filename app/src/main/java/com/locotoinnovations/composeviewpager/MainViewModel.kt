@@ -35,6 +35,7 @@ class MainActivityViewModel @Inject constructor(
             val posts: List<Post> = withContext(Dispatchers.IO) {
                 postService.getPosts()
             }
+
             _uiState.update {
                 MainActivityUiState(
                     posts = posts,
