@@ -13,6 +13,8 @@ retrofit2 = "2.11.0"
 okhttp3 = "4.12.0"
 hiltVersion = "2.52"
 kspVersion = "2.0.10-1.0.24"
+hiltNavitationCompose = "1.2.0"
+apolloVersion = "4.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,10 +44,16 @@ okhttp3-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-
 # dagger hilt
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavitationCompose" }
+# Apollo
+apollo-runtime = { group = "com.apollographql.apollo",  name = "apollo-runtime", version.ref = "apolloVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+# dagger hilt
 kotlinAndroidKsp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+# Apollo
+apollo-android = { id = "com.apollographql.apollo", version.ref = "apolloVersion" }

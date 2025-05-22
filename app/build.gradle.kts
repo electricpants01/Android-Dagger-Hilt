@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlinAndroidKsp)
     alias(libs.plugins.hiltAndroid)
     alias(libs.plugins.compose.compiler)
+    // apollo
+    alias(libs.plugins.apollo.android)
 }
 
 android {
@@ -75,12 +77,18 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.compose)
     // compose lifecycle
     implementation(libs.lifecycle.runtime.compose)
-    // retrofit
-    implementation(libs.retrofit2)
-    implementation(libs.retrofit2.converter.gson)
-    implementation(libs.okhttp3)
-    implementation(libs.okhttp3.logging.interceptor)
+    // logging interceptor
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     // dagger hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+    // apollo
+    implementation(libs.apollo.runtime)
+}
+
+apollo {
+    service("service") {
+        packageName.set("com.locototeam.graphqlapp")
+    }
 }
